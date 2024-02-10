@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Will you be my Valentine?</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
-    <title>Select an Option</title>
 </head>
 <body>
-    <h1>Will you be my valentine?</h1>
-    <form method="post">
-        <label for="option">Choose an option:</label><br>
-        <input type="radio" id="Yes" name="option" value="Yes">
-        <label for="Yes">Yes</label><br>
-        <input type="radio" id="No" name="option" value="No">
-        <label for="No">No</label><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <form id="optionForm" method="post">
+            <div class="options-container">
+                <label class="option">
+                    <input type="radio" id="Yes" name="option" value="Yes">
+                    Yes
+                </label>
+            </div>
+            <div class="options-container">
+                <label class="option">
+                    <input type="radio" id="No" name="option" value="No">
+                    No
+                </label>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Get all radio buttons
+        var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+        // Add event listener to each radio button
+        radioButtons.forEach(function(radioButton) {
+            radioButton.addEventListener('change', function() {
+                // Automatically submit the form when a radio button is selected
+                document.getElementById('optionForm').submit();
+            });
+        });
+    </script>
 </body>
 </html>
